@@ -1,15 +1,20 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React, { useEffect, useState } from 'react';
+import './App.css';
+import { Search } from './components/search';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [searchKey, setSearchKey] = useState(null);
+
+  useEffect(() => {
+    console.log(searchKey);
+  }, [searchKey]);
 
   return (
     <div className="App">
       <img src="https://tarfin.com/img/logo.svg" alt="Tarfin Logo" />
+      <Search placeholder={'Search me'} setSearchKey={setSearchKey} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
