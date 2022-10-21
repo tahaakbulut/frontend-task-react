@@ -1,14 +1,14 @@
 import React from 'react';
-import styles from './search.module.css';
+import styles from './index.module.css';
 
-export const Search = ({ placeholder, setSearchKey }) => {
+export const Search = ({ placeholder, setSearchKey, delay = 500 }) => {
   let timeout = null;
 
   const handleKeyUp = (e) => {
     clearTimeout(timeout);
     timeout = setTimeout(() => {
-      setSearchKey(e.target.value);
-    }, 600);
+      setSearchKey(e.target.value || null);
+    }, delay);
   };
 
   return (
