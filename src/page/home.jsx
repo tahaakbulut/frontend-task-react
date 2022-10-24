@@ -40,10 +40,14 @@ function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-4 py-10">
+    <div className="flex flex-col items-center justify-center min-h-screen w-full px-4 py-10">
       <img src="https://tarfin.com/img/logo.svg" alt="Tarfin Logo" />
       <Search placeholder={'Search me'} setSearchKey={setSearchKey} delay={700} className="my-6" />
-      <Table tableData={tableData} handleAction={handleTableAction} actionTag={<AiOutlineEye size="1.2rem" />} />
+      <Table
+        tableData={tableData}
+        handleAction={handleTableAction}
+        actionTag={<AiOutlineEye size="1.2rem" className="inline-block" />}
+      />
       <Pagination
         totalPage={pageData?.page?.totalPages}
         currentPage={pageData?.page?.number}

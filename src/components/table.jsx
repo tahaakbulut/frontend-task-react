@@ -22,45 +22,47 @@ export const Table = ({ tableData, handleAction, actionTag }) => {
 
   return (
     data.length > 0 && (
-      <div className="lg:overflow-x-auto mt-10">
-        <table className="table-fixed">
-          <thead>
-            <tr>
-              {Object.keys({ ...data[0] })
-                .filter((e) => e != 'id')
-                .map((col, i) => (
-                  <th className="px-2 py-1" key={i} onClick={() => handleSort(col)}>
-                    <span className="flex items-center justify-between cursor-pointer">
-                      {col}
-                      <BiSortAlt2 color={sortKey == col ? 'red' : ''} />
-                    </span>
-                  </th>
-                ))}
-              {handleAction && <th>Action</th>}
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((obj, i) => (
-              <tr key={i}>
-                {Object.values(obj)
-                  .filter((e, i) => i != 0)
-                  .map((e, index) => (
-                    <td className="border-t-[1px] border-primary px-2 py-1" key={index}>
-                      {e}
-                    </td>
+      <div className="container">
+        <div className="overflow-x-auto mt-10">
+          <table className="table-fixed mx-auto">
+            <thead>
+              <tr>
+                {Object.keys({ ...data[0] })
+                  .filter((e) => e != 'id')
+                  .map((col, i) => (
+                    <th className="px-2 py-1" key={i} onClick={() => handleSort(col)}>
+                      <span className="flex items-center justify-between cursor-pointer">
+                        {col}
+                        <BiSortAlt2 color={sortKey == col ? 'red' : ''} />
+                      </span>
+                    </th>
                   ))}
-                {handleAction && (
-                  <td
-                    className="cursor-pointer border-t-[1px] border-primary px-2 py-1"
-                    onClick={() => handleAction(obj.id)}
-                  >
-                    {actionTag}
-                  </td>
-                )}
+                {handleAction && <th>Action</th>}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {data.map((obj, i) => (
+                <tr key={i}>
+                  {Object.values(obj)
+                    .filter((e, i) => i != 0)
+                    .map((e, index) => (
+                      <td className="border-t-[1px] border-primary px-2 py-1" key={index}>
+                        {e}
+                      </td>
+                    ))}
+                  {handleAction && (
+                    <td
+                      className="cursor-pointer border-t-[1px] border-primary px-2 py-1 text-center"
+                      onClick={() => handleAction(obj.id)}
+                    >
+                      {actionTag}
+                    </td>
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     )
   );
