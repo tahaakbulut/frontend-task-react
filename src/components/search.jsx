@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './index.module.css';
 
 export const Search = ({ placeholder, setSearchKey, delay = 500 }) => {
   let timeout = null;
@@ -12,7 +11,7 @@ export const Search = ({ placeholder, setSearchKey, delay = 500 }) => {
   };
 
   return (
-    <form className={styles.search_box}>
+    <form className="search_box">
       <input type="text" placeholder={placeholder} onKeyUp={handleKeyUp} />
       <button type="reset" onClick={() => setSearchKey(null)}></button>
     </form>
