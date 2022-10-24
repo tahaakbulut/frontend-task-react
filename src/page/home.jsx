@@ -11,6 +11,10 @@ function Home() {
   const { events, getEvents, pageData } = useEvents();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    getEvents({ keyword: searchKey, size: 10, page: 0 });
+  }, [searchKey]);
+
   const tableData = events.map((event) => {
     const priceRanges = event.priceRanges?.map((price, i) => (
       <p key={i}>
@@ -27,13 +31,10 @@ function Home() {
     };
   });
 
-  useEffect(() => {
-    getEvents({ keyword: searchKey, size: 10, page: 0 });
-  }, [searchKey]);
-
   const handleClickPagination = (number) => {
     getEvents({ keyword: searchKey, size: 10, page: number });
   };
+
   const handleTableAction = (e) => {
     navigate(`/details/${e}`);
   };
